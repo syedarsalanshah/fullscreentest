@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Fullscreen API</title>
+<style>
+#myBox {
+width: 100px;
+height: 75px;
+background: #0099ff;
+padding: 10px;
+}
+</style>
+</head>
+<body>
+<div id="myBox">Testing Fullscreen API</div>
+<script>
+document.addEventListener('dblclick', () => {
+if (getFullscreenElement()) {
+document.exitFullscreen();
+} else {
+document.getElementById('myBox').requestFullscreen();
+}
+});
+function getFullscreenElement() {
+return document.fullscreenElement || document.webkitFullscreenElement || document.mozFullscreenElement || document.msFullscreenElement;
+}
+document.addEventListener('fullscreenchange', () => {
+console.log('Fullscreen changed');
+});
+</script>
+</body>
+</html>
